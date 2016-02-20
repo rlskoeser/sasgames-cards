@@ -64,6 +64,18 @@ $on-laptop:        800px;
     margin: 0 -15px 5px;  /* compensate for wrapper margins to make full width */
     padding-left: 30px;
 }
+
+.game-rules-content {
+    padding: 0 0 $spacing-unit 0;
+}
+.game-rules-content > * {
+    margin: 0 15px;
+}
+
+.game-rules-content .banner {
+    margin: 0;
+}
+
 @media (max-width: 650px) {
 
 input.checkbox-toggle ~ label {
@@ -73,8 +85,6 @@ input.checkbox-toggle ~ label {
     float:right;
 }
 
-/* todo: maybe use css content instead of two labels */
-
 input.checkbox-toggle + label::after {
     font-family: FontAwesome;
     content: "\f078"; /* chevron down */
@@ -83,10 +93,9 @@ input.checkbox-toggle:checked + label::after {
     content: "\f077"; /* chevron up */
 }
 
-
 .game-rules .content {
     display: none;
-    }
+}
 
 input.checkbox-toggle:checked ~ .content {
     display: block;

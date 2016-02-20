@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% comment %} {% include header.html %} {% endcomment %}
+    {% if page.banner %}
+    <img class="banner" src="{{ site.baseurl }}/images/{{ page.banner }}"/>
+    {% endif %}
+    <div class="game-rules-content">
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

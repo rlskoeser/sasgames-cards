@@ -1,0 +1,99 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting"
+;
+
+
+/* custom styles for card game rules page */
+h2 {
+    border: 1px solid gray;
+    padding: 5px;
+    background-color: #EFEFEF;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    margin: 0 -15px 5px;  /* compensate for wrapper margins to make full width */
+    padding-left: 30px;
+}
+@media (max-width: 650px) {
+
+input.checkbox-toggle ~ label {
+    display: block;
+    padding:.7em;
+    cursor: pointer;
+    float:right;
+}
+
+/* todo: maybe use css content instead of two labels */
+
+input.checkbox-toggle + label::after {
+    font-family: FontAwesome;
+    content: "\f078"; /* chevron down */
+}
+input.checkbox-toggle:checked + label::after {
+    content: "\f077"; /* chevron up */
+}
+
+
+.game-rules .content {
+    display: none;
+    }
+
+input.checkbox-toggle:checked ~ .content {
+    display: block;
+    }
+
+}
+
+input.checkbox-toggle {
+    display: none;
+    }

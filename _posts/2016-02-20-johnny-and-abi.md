@@ -8,9 +8,14 @@ layout: default
 
 <p>Games to play using the Johnny and Abi wedding cards</p>
 
-<p>Welcome to the Table!</p>
-
-<p>While you wait for your tablemates to come, look through your deck of cards and pick a card that resonates with you. </p>
+<div class="game-rules" id="welcome">
+    <input id="welcome-toggle" type="checkbox" class="checkbox-toggle"  checked="checked" />
+    <label for="welcome-toggle" class="btn btn-default fa"></label>
+    <h2>Welcome!</h2>
+    <div class="content">
+        <p>While you wait for your tablemates to come, look through your deck of cards and pick a card that resonates with you. </p>
+    </div>
+</div>
 
 <div class="game-rules" id="wd-cn">
 
@@ -61,11 +66,18 @@ layout: default
 
 <div class="content">
 <p>Play this quick game if any other game you have ends up as a tie.  Select the next card of the deck and then tell the group a true story about yourself that involves the word on the card. Someone on the other team (or other tied winner) tells a true story that involves themselves and the card. If you can weave in the Bride or Groom in your (true) story, all the better. The other players choose a winner from the two stories. If they declare a tie, place another round of Tie-Breaker.</p>
+</div>
+</div>
 
-<p>And Then…</p>
+<div class="game-rules" id="and-then">
+    <input id="and-then-toggle" type="checkbox" class="checkbox-toggle" />
+    <label for="and-then-toggle" class="btn btn-default fa"></label>
 
-<p>Tell an interactive story using the pictures or words from a card.
-To play deal everyone 2 cards and then flip a random card from the deck to start. The first person starts with: “Once upon a time…” and starts a story that has something to do with the flipped card. After a sentence or 2, the next person will lay a card from their hand down and add to the story. After 2 times around the table, the last person wraps up the story with their last card.</p>
+    <h2>And Then…</h2>
+    <div class="content">
+    <p>Tell an interactive story using the pictures or words from a card.
+    To play deal everyone 2 cards and then flip a random card from the deck to start. The first person starts with: “Once upon a time…” and starts a story that has something to do with the flipped card. After a sentence or 2, the next person will lay a card from their hand down and add to the story. After 2 times around the table, the last person wraps up the story with their last card.</p>
+    </div>
 </div>
 
 <div class="game-rules" id="blacksheep">

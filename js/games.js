@@ -26,7 +26,11 @@ function exitFullscreen() {
 /* board for word connections game */
 $.fn.connectionsBoard = function() {
     var element = this,
-        $this = $(this);
+        $this = $(this),
+        css = {
+            fullscreen: 'fullscreen',
+            perspective: 'perspective'
+        };
 
     var connectionsBoard =  {
         init : function(options) {
@@ -55,29 +59,31 @@ $.fn.connectionsBoard = function() {
                 card.clone().appendTo(board);
             }
             board.appendTo($this);
-            // perhaps a 'controls' div where buttons can be styled/positioned
-            // (center under the board?)
+            // add buttons to a controls div
+            // - randomize board
             var random = $('<button id="randomize-board" class="btn">randomize <i class="fa fa-random"></i></button>');
             random.on('click.connectionsBoard', function(event) {
                 $this.trigger('connectionsBoard:randomize');
             });
             random.appendTo(controls);
-
+            // - toggle full screen
             var fullscreen = $('<button id="fullscreen" class="btn">fullscreen <i class="fa fa-arrows-alt"></i></button>');
-            random.on('click.connectionsBoard', function(event) {
-                $this.trigger('connectionsBoard:randomize');
-            });
             fullscreen.appendTo(controls);
             fullscreen.on('click.connectionsBoard', function(event) {
                 $this.trigger('connectionsBoard:fullscreen');
             });
 
-            // button to toggle perspective?
+            // - toggle perspective
+            var perspective = $('<button id="perspective" class="btn">perspective <i class="fa fa-road"></i></button>');
+            perspective.appendTo(controls);
+            perspective.on('click.connectionsBoard', function(event) {
+                $this.trigger('connectionsBoard:perspective');
+            });
 
             controls.appendTo($this);
             return connectionsBoard;
         },
-        randomize : function() {
+        randomize: function() {
             var randomized = [],
                 options = $this.data("options").slice();  // work from a copy
             while (options.length > 0) {
@@ -90,15 +96,27 @@ $.fn.connectionsBoard = function() {
             return connectionsBoard;
         },
         toggle_fullscreen: function() {
-            // todo: layout & styles for container when it is full screen
-            // button icon can change also
-            // perhaps fs button should show it is active
-            if ($this.hasClass('fs')) {
-                $this.removeClass('fs');
+            if ($this.hasClass(css.fullscreen)) {
+                // in full screen mode, exit
+                $this.removeClass(css.fullscreen);
+                $this.find('#fullscreen').removeClass('on');
                 exitFullscreen();
             } else {
-                $this.addClass('fs');
+                // enter full screen mode
+                $this.addClass(css.fullscreen);
+                $this.find('#fullscreen').addClass('on');
                 launchFullscreen($this.get(0));
+            }
+        },
+        toggle_perspective: function() {
+            if ($this.hasClass(css.perspective)) {
+                // turn off
+                $this.removeClass(css.perspective);
+                $this.find('#perspective').removeClass('on');
+            } else {
+                // turn on
+                $this.addClass(css.perspective);
+                $this.find('#perspective').addClass('on');
             }
         }
 
@@ -109,6 +127,7 @@ $.fn.connectionsBoard = function() {
     // when button is clicked, randomize again
     $this.on('connectionsBoard:randomize', function(event) { connectionsBoard.randomize() });
     $this.on('connectionsBoard:fullscreen', function(event) { connectionsBoard.toggle_fullscreen() });
+    $this.on('connectionsBoard:perspective', function(event) { connectionsBoard.toggle_perspective() });
 
     return connectionsBoard;
 };

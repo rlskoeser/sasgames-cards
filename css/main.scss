@@ -174,6 +174,14 @@ blockquote p {
     content: "\f0b2";
 }
 
+.controls {
+    text-align: center;
+}
+
+.controls .btn {
+    font-size: 115%;
+}
+
 /* perspective:
     board container needs perspective, around 350px, perspective origin bottom
     actual board needs transformX(15deg) roughly (10-12 maybe)?

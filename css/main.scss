@@ -52,8 +52,7 @@ $on-laptop:        800px;
         "syntax-highlighting"
 ;
 
-
-/* custom styles for card game rules page */
+/* custom styles */
 
 .btn {
     padding: 5px;
@@ -61,7 +60,43 @@ $on-laptop:        800px;
     border: 1px solid gray;
     background-color: white;
     margin: 3px;
+    outline: none;
 }
+
+blockquote.quote {
+  /*background: #f9f9f9;*/
+  background-color: #65937d;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\f10d" "\f10e";  /* font awesome open/close double quotes */
+  /*quotes: "\201C""\201D""\2018""\2019";*/
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+blockquote:before {
+  font-family: FontAwesome;
+  color: #efefef;
+  content: open-quote;
+  font-size: 1.5em;
+  line-height: 0.1em;
+  margin-right: 0.5em;
+  vertical-align: top;
+}
+/*
+blockquote:after {
+  color: #efefef;
+  font-family: FontAwesome;
+  content: close-quote;
+  margin-left: 0.5em;
+}*/
+
+blockquote p {
+  display: inline;
+}
+
+/* custom styles for card game rules page */
+
 
 .btn:hover {
     background-color: #efefef;
@@ -112,13 +147,38 @@ $on-laptop:        800px;
     margin: 0 auto 15px;
     border-radius: 5px;
     padding: 4px 0px;
-
+}
+#board-container {
     -webkit-backface-visibility: visible;
    -webkit-perspective-origin: 150% 150%;
    -webkit-transform-style: preserve-3d;
     -webkit-perspective: 100px; /* Chrome, Safari, Opera  */
     perspective: 100px;
 }
+
+#board-container.fs {
+    width: 100%;
+    height: 100%;
+}
+
+.fs .board {
+    margin-top: 15%;
+}
+
+.board #randomize-board span::after {
+    font-family: FontAwesome;
+    content: "\f074";
+}
+.board #fullscreen span::after {
+    font-family: FontAwesome;
+    content: "\f0b2";
+}
+
+/* perspective:
+    board container needs perspective, around 350px, perspective origin bottom
+    actual board needs transformX(15deg) roughly (10-12 maybe)?
+
+*/
 
 .board .card {
     display: inline-block;
@@ -157,7 +217,7 @@ $on-laptop:        800px;
 }
 
 
-@media (min-width: 425px) {
+@media (max-width: 425px) {
     /* adjust icons for smaller screens */
     .card::after {
         font-size: 125%;
@@ -166,6 +226,7 @@ $on-laptop:        800px;
 }
 
 @media (min-width: 750px) {
+    /* move title onto banner image for larger screens */
     .game-rules-content .page-heading {
         position: absolute;
         top: 0;
@@ -179,6 +240,7 @@ input.checkbox-toggle ~ label {
     padding:.7em;
     cursor: pointer;
     float:right;
+    /* fixme: should whole bar be selectable ? make label bigger? */
 }
 
 
@@ -202,7 +264,8 @@ input.checkbox-toggle:checked + label::after {
     display: block;
 }
 
-@media (max-width: 650px) {
+/* for smaller screens add toggles and default to sections closed */
+@media (max-width: 850px) {
 
     input.checkbox-toggle ~ label {
         display: block;

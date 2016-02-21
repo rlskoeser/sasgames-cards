@@ -54,7 +54,20 @@ $on-laptop:        800px;
 
 
 /* custom styles for card game rules page */
-.game-rules h2 {
+
+.btn {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-color: white;
+    margin: 3px;
+}
+
+.btn:hover {
+    background-color: #efefef;
+}
+
+.game-rules h2, .game-rules h3 {
     border: 1px solid gray;
     padding: 5px;
     background-color: #EFEFEF;
@@ -62,7 +75,13 @@ $on-laptop:        800px;
     border-right: 0;
     border-bottom: 1px;
     margin: 0 -15px 5px;  /* compensate for wrapper margins to make full width */
-    padding-left: 30px;
+    padding-left: 15px;
+}
+
+.game-rules .subsection {
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed gray;
 }
 
 .game-rules-content {
@@ -76,14 +95,91 @@ $on-laptop:        800px;
     margin: 0;
 }
 
-@media (max-width: 650px) {
+.game-rules-content .page-heading {
+    padding: 10px;
+    margin: 0;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.board {
+    width: 100%;
+    max-width: 545px;
+    min-width: 280px;
+    background-color: gray;
+    text-align: center;
+    margin: 0 auto 15px;
+    border-radius: 5px;
+    padding: 4px 0px;
+
+    -webkit-backface-visibility: visible;
+   -webkit-perspective-origin: 150% 150%;
+   -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 100px; /* Chrome, Safari, Opera  */
+    perspective: 100px;
+}
+
+.board .card {
+    display: inline-block;
+    width: 22%;
+    border-radius: 10px;
+    background-color: #efefef;
+    margin: 2px 2px 0 2px;
+    padding: 7%;  /* use padding to keep size relative */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.card::after {
+    position: absolute;
+    font-family: FontAwesome;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 35%;
+    opacity: 0.4;
+    color: white;
+    font-size: 175%;
+}
+
+.card.team1 {
+    background-color: #397CF0;
+}
+.card.team1::after {
+    content: "\f004"; /* heart */
+}
+.card.team2 {
+    background-color: #39CD4D;
+}
+.card.team2::after {
+    content: "\f06b"; /* gift */
+}
+
+
+@media (min-width: 425px) {
+    /* adjust icon size for smaller screens */
+    .card::after {
+        font-size: 125%;
+    }
+}
+
+@media (min-width: 750px) {
+    .game-rules-content .page-heading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom-right-radius: 10px;
+    }
+}
 
 input.checkbox-toggle ~ label {
-    display: block;
+    display: none;
     padding:.7em;
     cursor: pointer;
     float:right;
 }
+
 
 input.checkbox-toggle + label::after {
     font-family: FontAwesome;
@@ -93,16 +189,33 @@ input.checkbox-toggle:checked + label::after {
     content: "\f077"; /* chevron up */
 }
 
-.game-rules .content {
+.subsection input.checkbox-toggle ~ label {
+    display: block;
+}
+
+.subsection input.checkbox-toggle ~ .content {
     display: none;
 }
 
-input.checkbox-toggle:checked ~ .content {
+.subsection input.checkbox-toggle:checked ~ .content {
     display: block;
+}
+
+@media (max-width: 650px) {
+
+    input.checkbox-toggle ~ label {
+        display: block;
     }
 
+    .game-rules .content {
+        display: none;
+    }
+
+    input.checkbox-toggle:checked ~ .content {
+        display: block;
+    }
 }
 
 input.checkbox-toggle {
     display: none;
-    }
+}

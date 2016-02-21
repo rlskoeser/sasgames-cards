@@ -6,17 +6,22 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: SAS Games Cards
+title: Cards | Short Attention Span Games
 email: gkoeser@sasgames.net
 description: > # this means to ignore newlines until "baseurl:"
   Custom card games for your event by Greg Koeser /
-  <a href="http://sasgames.net">Short Attention Span Games</a>.
+  <a href="http://sasgames.net/">Short Attention Span Games</a>.
+# local dev config
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "http://cards.sasgames.net" # the base hostname & protocol for your site
 
 # github pages url
 baseurl: "/sasgames-cards" # the subpath of your site, e.g. /blog
 url: "http://rlskoeser.github.io" # the base hostname & protocol for your site
+
+
+# permalink: pretty
+permalink: /:year/:title/
 
 twitter_username: gkoeser
 github_username:

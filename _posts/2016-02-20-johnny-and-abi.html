@@ -5,6 +5,8 @@ banner: abi-johnny-wide.png
 categories:
     - rules
     - weddings
+extra_js:
+    - games.js
 ---
 
 
@@ -14,7 +16,7 @@ categories:
 
 <div class="game-rules" id="welcome">
     <input id="welcome-toggle" type="checkbox" class="checkbox-toggle"  checked="checked" />
-    <label for="welcome-toggle" class="btn btn-default fa"></label>
+    <label for="welcome-toggle" class="fa"></label>
     <h2>Welcome!</h2>
     <div class="content">
         <p>While you wait for your tablemates to come, look through your deck of cards and pick a card that resonates with you. </p>
@@ -24,7 +26,7 @@ categories:
 <div class="game-rules" id="wd-cn">
 
 <input id="wd-cn-toggle" type="checkbox" class="checkbox-toggle" checked="checked" /> {% comment %}checked for dev {% endcomment %}
-<label for="wd-cn-toggle" class="btn btn-default fa"></label>
+<label for="wd-cn-toggle" class="fa"></label>
 
 <h2>Word Connections</h2>
 
@@ -32,11 +34,13 @@ categories:
 
 <p>In Word Connections you will be making connections between random words and trying to get your team to guess your words in the fewest clues before the other team gets their words.</p>
 
+<div id="board-container" class="container">
 <div class="word-connections board"> </div>
+</div>
 
 <div class="subsection">
 <input id="wd-cn-setup-toggle" type="checkbox" class="checkbox-toggle" checked="checked" />
-<label for="wd-cn-setup-toggle" class="btn btn-default fa"></label>
+<label for="wd-cn-setup-toggle" class="fa"></label>
 <h3>Set up</h3>
 <div class="content">
 <p>Break into 2 teams (they can be of any size, from teams of 2 to teams of 10). Also, unequal size teams work as well, one team can be 4 people and the other team of 5 people. </p>
@@ -55,7 +59,7 @@ categories:
 
 <div class="subsection">
 <input id="wd-cn-rules-toggle" type="checkbox" class="checkbox-toggle" checked="checked" />
-<label for="wd-cn-rules-toggle" class="btn btn-default fa"></label>
+<label for="wd-cn-rules-toggle" class="fa"></label>
 <h3>Rules about clues that can be given. </h3>
 <div class="content">
 <ul>
@@ -78,7 +82,7 @@ categories:
 <div class="game-rules" id="tiebreaker">
 
 <input id="tiebreaker-toggle" type="checkbox" class="checkbox-toggle" />
-<label for="tiebreaker-toggle" class="btn btn-default fa"></label>
+<label for="tiebreaker-toggle" class="fa"></label>
 
 <h2>Tie-Breaker</h2>
 
@@ -89,18 +93,18 @@ categories:
 
 <div class="game-rules" id="and-then">
     <input id="and-then-toggle" type="checkbox" class="checkbox-toggle" />
-    <label for="and-then-toggle" class="btn btn-default fa"></label>
+    <label for="and-then-toggle" class="fa"></label>
 
     <h2>And Then…</h2>
     <div class="content">
     <p>Tell an interactive story using the pictures or words from a card.
-    To play deal everyone 2 cards and then flip a random card from the deck to start. The first person starts with: “Once upon a time…” and starts a story that has something to do with the flipped card. After a sentence or 2, the next person will lay a card from their hand down and add to the story. After 2 times around the table, the last person wraps up the story with their last card.</p>
+    To play deal everyone 2 cards and then flip a random card from the deck to start. The first person starts with: <blockquote>“Once upon a time…”</blockquote> and starts a story that has something to do with the flipped card. After a sentence or 2, the next person will lay a card from their hand down and add to the story. After 2 times around the table, the last person wraps up the story with their last card.</p>
     </div>
 </div>
 
 <div class="game-rules" id="blacksheep">
 <input id="blacksheep-toggle" type="checkbox" class="checkbox-toggle" />
-<label for="blacksheep-toggle" class="btn btn-default fa"></label>
+<label for="blacksheep-toggle" class="fa"></label>
 
 <h2>Black Sheep</h2>
 

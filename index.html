@@ -1,23 +1,46 @@
 ---
 layout: default
+extra_js:
+    - modernizr.js
+    - jquery.baraja.js
+extra_css:
+    - baraja.css
 ---
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+<p class="page-heading">Custom card decks and games for private or corporate events.</p>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+<ul id="baraja-el" class="baraja-container">
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/envelopes.png" alt="envelopes"/>
+<!--    <h4>Coco Loko</h4>
+    <p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p> -->
+  </li>
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/biology.png" alt="biology"/>
+  </li>
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/enders-game.png" alt="Ender's Game"/>
+  </li>
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/mochi.png" alt="Mochi"/>
+  </li>
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/bread.png" alt="Bread"/>
+  </li>
+  <li>
+    <img src="{{ site.base_url }}/images/sample-cards/aj-cardback.png" alt="Sample card back"/>
+  </li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+<script>
+$( document ).ready(function() {
+  var baraja = $( '#baraja-el' ).baraja();
+  baraja.fanSettings.direction = 'left';
+  baraja.fan();
+});
+</script>

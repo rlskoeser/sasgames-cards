@@ -143,6 +143,14 @@
    border-left: none;
    padding-left: 0;
 }
+.social-media-list:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
 
 .footer-col-wrapper {
     font-size: 15px;
@@ -237,7 +245,6 @@
     display: block;
     font-size: 24px;
 }
-
 
 
 /**

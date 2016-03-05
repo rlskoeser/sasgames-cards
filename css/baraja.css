@@ -37,3 +37,10 @@ ul.baraja-container li {
 	height: 310px;
 	margin: 10px;
 }
+
+@media (max-width: 480px) {
+	ul.baraja-container {
+		width: 150px;
+		height: 233px;
+	}
+}

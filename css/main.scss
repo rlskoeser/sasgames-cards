@@ -113,6 +113,10 @@ blockquote p {
     padding-left: 15px;
 }
 
+.game-rules {
+    position: relative;
+}
+
 .game-rules .subsection {
   margin-left: 15px;
   margin-bottom: 15px;
@@ -275,14 +279,16 @@ input.checkbox-toggle ~ label {
     display: none;
     padding:.7em;
     cursor: pointer;
-    float:right;
-    /* fixme: should whole bar be selectable ? make label bigger? */
+    text-align: right;
+    position: absolute;
+    width: 100%;
 }
 
 
 input.checkbox-toggle + label::after {
     font-family: FontAwesome;
     content: "\f078"; /* chevron down */
+    margin-right: 25px;
 }
 input.checkbox-toggle:checked + label::after {
     content: "\f077"; /* chevron up */

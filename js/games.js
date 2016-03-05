@@ -129,6 +129,23 @@ $.fn.connectionsBoard = function() {
     $this.on('connectionsBoard:fullscreen', function(event) { connectionsBoard.toggle_fullscreen() });
     $this.on('connectionsBoard:perspective', function(event) { connectionsBoard.toggle_perspective() });
 
+    // if user exits via esc or back button, remove fullscreen classes
+    function escFullscreen(event) {
+        if (document.fullscreen == false || document.webkitIsFullScreen == false ||
+            document.mozFullScreen == false || document.msFullscreenElement == false ) {
+            $this.removeClass(css.fullscreen);
+            $this.find('#fullscreen').removeClass('on');
+        }
+        // continue processing normally
+        return true;
+    }
+    if (document.addEventListener) {
+        document.addEventListener('webkitfullscreenchange', escFullscreen);
+        document.addEventListener('mozfullscreenchange', escFullscreen);
+        document.addEventListener('fullscreenchange', escFullscreen);
+        document.addEventListener('MSFullscreenChange', escFullscreen);
+    }
+
     return connectionsBoard;
 };
 

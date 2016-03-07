@@ -14,7 +14,9 @@ extra_js:
 
 <h2>Thank you! Xie Xie! Gracias! Multumesc!</h2>
 
-<p>Thank you for celebrating the marriage of Johnny and Abigail Lui. These cards are full of things that Johnny and Abi love &mdash; favorite colors, books, movies, etc, as well as moments that they have shared together, like their first date and proposal site. We hope you have fun learning more about Johnny and Abi as you interact with the cards through these games. The games can be played in any order and we hope you enjoy the time playing them during the reception. When you pull out your wedding favor cards in the future to replay some of the games, take a moment to pray for Johnny and Abi's marriage.</p>
+<p>Thank you for celebrating the marriage of Johnny and Abigail Lui. These cards are full of things that Johnny and Abi love as well as moments that they have shared together.</p>
+
+<p>We hope you have fun learning more about Johnny and Abi as you interact with the cards through these games. When you pull out your wedding favor cards in the future to replay some of the games, take a moment to pray for Johnny and Abi's marriage.</p>
 
 <div class="game-rules" id="welcome">
     <input id="welcome-toggle" type="checkbox" class="checkbox-toggle"  checked="checked" />
@@ -45,8 +47,10 @@ extra_js:
 
 <div class="content">
 
-<p>In Word Connections you will be making connections between random words and trying to get your team to guess your words in the fewest clues before the other team gets their words.</p>
+<p>Make connections between random cards and try to get your team to guess your cards in the fewest clues before the other team gets all of their cards.</p>
 
+{% comment %} container for js to generate randomizable board {% endcomment %}
+<div class="word-connections board-container"> </div>
 
 
 <div class="subsection">
@@ -54,43 +58,44 @@ extra_js:
 <label for="wd-cn-setup-toggle" class="fa"></label>
 <h3>Set up</h3>
 <div class="content">
-<p>Break into 2 teams of any size. </p>
+<p>Break into 2 teams of any size (at least 2 players per team).</p>
 
-<p>Shuffle the cards and deal out 16 random face-up cards in a 4 x 4 grid. These 16 words are the pool of words that the teams need to clue. One team will have 6 of these words, the other team will have the other 6 words, and there will be 4 neutral cards. </p>
+<p>Shuffle the cards and deal out 16 random face-up cards in a 4 x 4 grid. These 16 cards are the pool of words that the teams need to clue. Each team will have 6 of these cards, with 4 neutral cards.</p>
 
-<p>Choose a player from each side and have them sit next to each other and look at the below randomized board. The Randomize button randomizes the board. The Perspective button tilts the board on the screen. This is useful to ensure that both clue-givers are visualizing the board from the same perspective. The Fullscreen button locks in the board on your phone and after you are familiar with the rules, the mode you will use most of the time. 
+<p>Choose a player from each side and have them sit next to each other and look at the board above. The “Randomize” button will generate a new set of team cards assignments. The “Perspective” button tilts the board on the screen, which may be useful to ensure that both clue-givers are looking at the board the same way. The “Fullscreen” button will make the board fullscreen and hide the randomize button to avoid accidentally changing the layout mid-game.</p>
 
-<div class="word-connections board-container"> </div>
+<p>Choose who will be Blue (and go first) and who will be Green (and go second). Hit the “Randomize” button to get a new set of card assignments.  Only the two cluegivers should look at the phone so that only they know the cards that belong to their team. </p>
 
-Choose who will be Blue (and go first) and who will be Green (and go second). They will hit the “Randomize” button and it will randomize the grid on the phone. Only the two cluegivers should be looking at the phone so they know the cards that belong to their team. </p>
+<p>Starting with the Blue clue-giver, give your teammates a one word or two-word phrase clue that applies to some of your assigned cards. After giving the clue, say “This applies to # cards” (where # is the number of cards that you  hope your team will guess based on your clue).</p>
 
-<p>The Blue player will first give a word or word-phrase (no more than 2 words) clue that ties some of the words assigned to you together. After giving their clue, that player will say “This applies to # tiles” (where # is the number of tiles that you are hoping your team will guess). </p>
+<p>The Blue team guessers can then discuss what they think the clue means and which cards it refers to. When they have decided on the first card to select, touch the card to indicate their guess. The clue-giver should be straight-faced and not react to the discussion or make any move towards the cards until the guessers lock in their choice. The clue-giver should always look back at the board to confirm then remove the card and either put it in front of them (if it belongs to their team), in front of the other clue-giver if it is one of theirs, or else in a neutral pile. If a card is guessed correctly, the guessing team can choose to continue and make an additional guess. As long as you continue to guess correctly, you can keep guessing.</p>
 
-<p>The Blue team will then debate about what they think the clue means and which cards are being referred to. When they have decided on the first card to select, they will touch the card as their guess. The Blue clue-giver should be straight-faced and not react to the discussion and not make any move towards the cards until they lock in their guesses. The clue-giver should always look back at the phone to confirm then remove the card and either put it in front of them (if it was a blue card), in front of the green clue-giver if it is a green card, or in a neutral pile if it was a gray card. If a blue card was successfully selected, the blue team can choose to continue and make an additional guess. As long as you continue to get successes the blue team can keep guessing. </p>
-
-<p>When a neutral or the other player’s color is selected that clue-round ends. In this case, the Green clue-giver would have a chance to give their word or word phrase clue and their number of cards that it refers to.</p>
+<p>When a neutral or the other player’s color is selected that clue-round ends, and the other clue giver takes another turn.</p>
 </div>
 </div>
 
 <div class="subsection">
 <input id="wd-cn-rules-toggle" type="checkbox" class="checkbox-toggle" checked="checked" />
 <label for="wd-cn-rules-toggle" class="fa"></label>
-<h3>Rules about clues that can be given. </h3>
+<h3>Rules about giving clues</h3>
 <div class="content">
 <ul>
-<li>Your word or word phrase clue must be about the meaning of the words or something about the picture on the card. Your clue should not be about the position of the cards (Left side, for example is an invalid clue), about the suit or number of the card (Diamonds, Spades, or Jack, for example is an invalid clue), or about the starting letter of the card (P, for example, to clue in Paddleboarding and Palindrome is an invalid clue). </li>
-<li>Your clues must be English words. No fair giving a French word to clue a card, unless it is a common English expression.</li>
+<li>Your word or word phrase clue should be about the meaning of the words or the picture on the card. Your clue should <i>not</i> be about the position of the cards (e.g., left side), about the suit or number of the card (e.g. Diamonds, Spades, or Jack), or about the starting letter of the card (e.g. P to clue Paddleboarding and Palindrome). </li>
+<li>Your clues should be English words. No fair giving a French word to clue a card, unless it is a common English expression.</li>
 <li>You can’t say any form of the words that are currently on the board.</li>
-<li>If you give a 2-word phrase, the words must go together and not be 2 random separate clues to 2 separate words. If there is a common two-word word phrase that happens to give different information, than the clue is fine. For example, Sourpatch Kids is a common phrase that might get someone to select Apple Cider Vinegar and Ender’s Game &mdash; though it could totally fail as a clue as well. </li>
+<li>If you give a 2-word phrase, the words must go together and not be 2 random separate clues to 2 separate words. If there is a common two-word word phrase that happens to give different information, than the clue is fine. For example, Sourpatch Kids is a common phrase that might get someone to select Apple Cider Vinegar and Ender’s Game &mdash; though it could totally fail as a clue as well.</li>
 </ul>
-
-<p>Remember, for the game to be most successful, the clue-giver should not give non-verbal clues and should remain straight-faced throughout the game. When an unexpected card is selected, they should not reveal verbally or non-verbally if the card selected was  was what the clue-giver was thinking about. </p>
-
-<p>Both teams will be able to give the same amount of clues. If the Blue team gets their 6th card, their turn ends and the Green team gets one last chance to tie. If the Green team is the first team to 6, the game just ends with them as the winner (both teams would have had an equal number of clues, since Blue always starts).</p>
 </div>
 </div>
+
+<p>Remember, for the game to be most successful, the clue-giver should not give non-verbal clues and should remain straight-faced throughout the game. When an unexpected card is selected, do not reveal if the card selected was the intended one.</p>
+
+<p>When the game is over, feel free to discuss what you meant by your clues and laugh about any misunderstandings or unexpected associations.</p>
+
+<p>Both teams will be able to give the same number of clues. If the Blue team gets their 6th card, their turn ends and the Green team gets one last chance to tie. If the Green team is the first team to 6, the game just ends with them as the winner (both teams would have had an equal number of clues, since Blue always starts).</p>
 
 <p>If the game ends tied, then you should play a quick game of Tie-Breaker.</p>
+
 </div>
 </div>
 
@@ -125,13 +130,19 @@ Choose who will be Blue (and go first) and who will be Green (and go second). Th
 
     <h2>Lui-O</h2>
     <div class="content">
-    <p>Be the first to get rid of your cards by following suit or rank to the discard pile. Youngest player goes first. Deal 5 cards to each player and then start the discard pile with the next card from the deck. The first player needs to play a card that matches the suit (hearts, spades, clubs, or diamonds) or rank (Ace, King, Queen, Jack, 10, etc). When playing a card, the player must share something to the group about the word or picture on the card. At the start of the game, turn order is clockwise around the table. The following cards are special:</p>
+    <p>Be the first to get rid of your cards by following suit or rank to the discard pile. Youngest player goes first. Deal 5 cards to each player and then start a discard pile by flipping the next card. The first player needs to play a card that matches either the suit (hearts, spades, clubs, or diamonds) or rank (Ace, King, Queen, Jack, 10, etc). When you play a card, <b>share something to the group</b> about the word or picture. Start playing clockwise around the table. The following cards are special:</p>
     <ul>
-        <li>Aces - Wild cards that can be played on your turn to change the suit</li>
-        <li>Kings - Reverses the gameplay</li>
-        <li>2s - Require the next player to miss their turn and draw 2 cards</li>
+        <li><b>Ace</b>: Wild cards that can be played on your turn to change the suit</li>
+        <li><b>King</b>: Reverse the direction of play</li>
+        <li><b>2</b>: Next player must draw 2 cards and skip a turn</li>
     </ul>
     <p>When you are down to your last card, you must say "Johnny and Abi" or draw a penalty card.</p>
     <p>The winner of the game is the first one out. They get to come up with a new rule for future games of Lui-O. Rules could include adding to the special cards, forcing a motion or action if something happens, or any creative thing you can think of.</p>
+
+    <p><a target="_blank" href="http://goo.gl/forms/PYxQ23sC2l">Submit your new rules</a> to share them with everyone.</p>
+
+    <b>New rules that have been added so far:</b>
+    <ul id="new-luio-rules"/>
+
     </div>
 </div>

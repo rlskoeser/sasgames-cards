@@ -151,4 +151,13 @@ $.fn.connectionsBoard = function() {
 
 $( document ).ready(function() {
     $('.word-connections').connectionsBoard();
+
+    // spreadsheet url for json data from google form for adding new rules
+    var url = 'https://spreadsheets.google.com/feeds/list/1g5hqNfD0pnd4Mxq9KTpdfQuPif6HHo2IclJOovBHx0s/1/public/full?alt=json';
+    $.getJSON(url, function(data) {
+        var entry = data.feed.entry;
+        $(entry).each(function(){
+            $('#new-luio-rules').append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
+        });
+    });
 });

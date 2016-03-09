@@ -41,11 +41,13 @@ extra_css:
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+{% comment %}<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% endcomment %}
+        <span class="post-meta">{{ post.date | date: "%Y" }}</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+        {% if post.description %}<p class="text-muted">{{ post.description }}</p>{% endif %}
       </li>
     {% endfor %}
   </ul>

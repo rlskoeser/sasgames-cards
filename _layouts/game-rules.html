@@ -7,7 +7,15 @@
 
     {% comment %} {% include header.html %} {% endcomment %}
     {% if page.banner %}
-    <img class="banner" src="{{ site.baseurl }}/images/{{ page.banner }}"/>
+    <picture>
+      <source
+        media="(max-width: 480px)"
+        srcset="{{ site.baseurl }}/images/{{ page.banner.small }}">
+      <source
+        media="(max-width: 850px)"
+        srcset="{{ site.baseurl }}/images/{{ page.banner.medium }}">
+      <img class="banner" src="{{ site.baseurl }}/images/{{ page.banner.default }}"/>
+    </picture>
     {% endif %}
     <div class="game-rules-content">
         {{ content }}

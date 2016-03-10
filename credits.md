@@ -8,7 +8,7 @@ Game design and rules by **Greg Koeser**.
 
 * “Word Connections” is adapted from [Codenames](https://boardgamegeek.com/boardgame/178900/codenames), by Vlaada Chvátil
 * “Tie Breaker” inspired by [Tie Breaker](https://boardgamegeek.com/boardgame/96672/tiebreaker), by Ted Alspach
-* “Lui-O” is based on Kings Reverse
+* “Liu-O” is based on Kings Reverse
 * “Black Sheep” is adapted from
   [Photo Jolts!](http://www.amazon.com/Image-based-Activities-Increase-Creativity-Conversation-ebook/dp/B00D2ZHW92) by Glenn Hughes and Sivasailam “Thiagi” Thiagarajan
 

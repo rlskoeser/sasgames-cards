@@ -157,7 +157,7 @@ $( document ).ready(function() {
     $.getJSON(url, function(data) {
         var entry = data.feed.entry;
         $(entry).each(function(){
-            $('#new-luio-rules').append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
+            $('#new-liuo-rules').append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
         });
     });
 });

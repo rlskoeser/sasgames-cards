@@ -149,15 +149,33 @@ $.fn.connectionsBoard = function() {
     return connectionsBoard;
 };
 
-$( document ).ready(function() {
-    $('.word-connections').connectionsBoard();
+// spreadsheet url for json data from google form for adding new rules
+var newrules_url = 'https://spreadsheets.google.com/feeds/list/1g5hqNfD0pnd4Mxq9KTpdfQuPif6HHo2IclJOovBHx0s/1/public/full?alt=json';
+var newrules_lastmodified;
 
-    // spreadsheet url for json data from google form for adding new rules
-    var url = 'https://spreadsheets.google.com/feeds/list/1g5hqNfD0pnd4Mxq9KTpdfQuPif6HHo2IclJOovBHx0s/1/public/full?alt=json';
-    $.getJSON(url, function(data) {
+function loadLiuORules() {
+    // function to periodically reload custom rules from the google spreadsheet
+
+    $.getJSON(newrules_url, function(data, status, jqxhr) {
+        if (newrules_lastmodified == jqxhr.getResponseHeader('Last-Modified')) {
+            // no rules have changed, nothing to do
+            return;
+        }
+        // store the current last modified date
+        newrules_lastmodified = jqxhr.getResponseHeader('Last-Modified');
         var entry = data.feed.entry;
+        var rule_list = $('#new-liuo-rules');
+        rule_list.find('li').remove();  // remove existing entries for referch
         $(entry).each(function(){
-            $('#new-liuo-rules').append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
+            rule_list.append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
         });
     });
+
+    // setTimeout(loadLiuORules, 5000); // time in ms (5 seconds) for testing
+    setTimeout(loadLiuORules, 1000 * 60 * 5); // time in ms (5 minutes)
+}
+
+$( document ).ready(function() {
+    $('.word-connections').connectionsBoard();
+    loadLiuORules();
 });

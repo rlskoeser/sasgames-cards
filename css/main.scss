@@ -197,10 +197,14 @@ blockquote p {
     top: 0;
     left: 0;
     width: 100%;
-    padding-top: 50%;
+    padding-top: 20%;
     opacity: 0.4;
     color: white;
     font-size: 175%;
+}
+
+.board-container.fullscreen .card::after {
+  padding-top: 25%;
 }
 
 .card.team1 {
@@ -252,7 +256,7 @@ blockquote p {
     /* adjust icons for smaller screens */
     .card::after {
         font-size: 125%;
-        padding-top: 35%;
+        padding-top: 15%;
     }
 }
 

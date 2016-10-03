@@ -14,11 +14,11 @@ description: > # this means to ignore newlines until "baseurl:"
   <a href="http://sasgames.net/">Short Attention Span Games</a>.
 # local dev config
 # baseurl: "" # the subpath of your site, e.g. /blog
-# url: "http://cards.sasgames.net" # the base hostname & protocol for your site
+url: "http://cards.sasgames.net" # the base hostname & protocol for your site
 
 # github pages url
-baseurl: "/sasgames-cards" # the subpath of your site, e.g. /blog
-url: "http://rlskoeser.github.io" # the base hostname & protocol for your site
+# baseurl: "/sasgames-cards" # the subpath of your site, e.g. /blog
+# url: "http://rlskoeser.github.io" # the base hostname & protocol for your site
 
 
 # permalink: pretty

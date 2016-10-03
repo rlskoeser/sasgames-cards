@@ -1,7 +1,5 @@
----
----
 {
- "name": "{{ site.title }}",
+ "name": "App",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",

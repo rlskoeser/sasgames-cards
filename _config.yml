@@ -29,3 +29,14 @@ github_username:
 
 # Build settings
 markdown: kramdown
+
+collections:
+    game_rules:
+        output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: game_rules
+    values:
+      layout: game

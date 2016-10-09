@@ -1,0 +1,8 @@
+<div class="game-rules" id="{{ game.name }}">
+    <input id="{{ game.name }}-toggle" type="checkbox" class="checkbox-toggle"  checked="checked" />
+    <label for="{{ game.name }}-toggle" class="fa"></label>
+    <h2>{% if include.title %}{{ include.title }}{% else %}{{ game.title }}{% endif %}</h2>
+    <div class="content">
+        {% if include.content %}{{ include.content }}{% else %}{{ game }}{% endif %}
+    </div>
+</div>

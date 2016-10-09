@@ -1,49 +1,11 @@
 ---
-title: NASAGA
-layout: game-rules
-date: 2016-10-03T16:26:07-04:00
-description: >
-    Custom card deck and games for NASAGA conferences.
-banner:
-    default: nasaga.png
-    medium: nasaga_850.png
-    small: nasaga_480.png
-categories:
-    - rules
-extra_js:
-    - games.js
+name: word-xns
+title: Word Connections
 ---
-
-
-<h1 class="page-heading">NASAGA conference cards</h1>
-
-<div>
-    <p>Welcome to the conference!</p>
-</div>
-
-
-<div class="game-rules" id="welcome">
-    <input id="welcome-toggle" type="checkbox" class="checkbox-toggle"  checked="checked" />
-    <label for="welcome-toggle" class="fa"></label>
-    <h2>Welcome to NASAGA!</h2>
-    <div class="content">
-        <p>Look through your deck of cards and find a card or two that resonates with you. Introduce yourself to someone new at the conference and share the card you chose why you chose it.</p>
-    </div>
-</div>
-
-
-<div class="game-rules" id="wd-cn">
-
-<input id="wd-cn-toggle" type="checkbox" class="checkbox-toggle"/>
-<label for="wd-cn-toggle" class="fa"></label>
-
-<h2>Word Connections</h2>
-
-<div class="content">
 
 <p>Make connections between random cards and try to get your team to guess your cards in the fewest clues before the other team gets all of their cards.</p>
 
-{% comment %} container for js to generate randomizable board {% endcomment %}
+<!-- container for js to generate randomizable board -->
 <div class="word-connections board-container"> </div>
 
 
@@ -89,7 +51,3 @@ extra_js:
 <p>Both teams will be able to give the same number of clues. If the Blue team gets their 6th card, their turn ends and the Green team gets one last chance to tie. If the Green team is the first team to 6, the game just ends with them as the winner (both teams would have had an equal number of clues, since Blue always starts).</p>
 
 <p>If the game ends tied, then you should play a quick game of Tie-Breaker.</p>
-
-</div>
-</div>
-

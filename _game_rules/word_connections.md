@@ -50,4 +50,3 @@ title: Word Connections
 
 <p>Both teams will be able to give the same number of clues. If the Blue team gets their 6th card, their turn ends and the Green team gets one last chance to tie. If the Green team is the first team to 6, the game just ends with them as the winner (both teams would have had an equal number of clues, since Blue always starts).</p>
 
-<p>If the game ends tied, then you should play a quick game of Tie-Breaker.</p>

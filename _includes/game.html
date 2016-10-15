@@ -4,5 +4,6 @@
     <h2>{% if include.title %}{{ include.title }}{% else %}{{ game.title }}{% endif %}</h2>
     <div class="content {% if include.style %}{{ include.style }}{% endif %}">
         {% if include.content %}{{ include.content }}{% else %}{{ game }}{% endif %}
+        {% if include.ps %}{{ include.ps }}{% endif %}
     </div>
 </div>

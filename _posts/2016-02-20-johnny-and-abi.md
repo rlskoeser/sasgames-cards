@@ -36,7 +36,7 @@ extra_js:
 
 {% comment %} Word Connections {% endcomment %}
 {% assign game = site.game_rules | where:'name', 'word-xns' | first %}
- {% include game.html style="wedding" %}
+ {% include game.html style="wedding" ps='<p>If the game ends tied, then you should play a quick game of Tie-Breaker.</p>' %}
 
 {% comment %} Tie Breaker {% endcomment %}
 {% assign game = site.game_rules | where:'name', 'tiebreaker' | first %}

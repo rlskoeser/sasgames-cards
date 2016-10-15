@@ -131,8 +131,8 @@ $.fn.connectionsBoard = function() {
 
     // if user exits via esc or back button, remove fullscreen classes
     function escFullscreen(event) {
-        if (document.fullscreen == false || document.webkitIsFullScreen == false ||
-            document.mozFullScreen == false || document.msFullscreenElement == false ) {
+        if (document.fullscreen === false || document.webkitIsFullScreen === false ||
+            document.mozFullScreen === false || document.msFullscreenElement === false ) {
             $this.removeClass(css.fullscreen);
             $this.find('#fullscreen').removeClass('on');
         }
@@ -175,7 +175,74 @@ function loadLiuORules() {
     setTimeout(loadLiuORules, 1000 * 60 * 5); // time in ms (5 minutes)
 }
 
+/* logic for nasaga game inventor card selection */
+$.fn.gameInventor = function() {
+    var element = this,
+        $this = $(this),
+        /** NOTE: doesn't currently account for site base url config */
+        base_path = '/images/nasaga/cards/',
+        ext = '.png',
+        cards = {
+            'type': ['01_Cardgame', '02_ModernBoardGames', '03_Gameshow',
+            '04_Party Games', '05_Trivia', '06_Metaphors', '07_Simulations',
+            '08_Icebreakers', '09_Socialchange', '10_ScavengerHunt',
+            '11_Debriefing', '12_Jolt', '13_Mobilegames'
+            ],
+            'mechanism': ['14_AreaControl', '15_Deckbuilding', '16_WorkerPlacement',
+            '17_RollandMove', '18_Dexterity', '19_Auction', '20_Role Selection',
+            '21_SetCollection', '22_Tileplacement', '23_Cooperation', '24_Puzzle',
+            '25_PressYourLuck', '26_RealTimeStrategy'],
+            'audience': ['27_ExecutiveDirector', '28_MadScientist', '29_BoardChair',
+            '30_Authors', '31_Gardener', '32_Organizer', '33_InstructionalDesigner',
+            '34_Professor', '35_Keynote', '36_Facilitator', '37_GameDesigner',
+            '38_Entertainer', '39_Attendee'],
+            'theme': ['40_Space', '41_TheKing', '42_Egyptians', '43_Dance',
+            '44_Laughter', '45_Friendships', '46_Mummy', '47_Fountain', '48_Monkeys',
+            '49_Diamonds', '50_FunnyFaces', '51_Awards', '52_Promises']
+        },
+        baraja = $('#game-inventor-cards').baraja(),
+        baraja_opts = {  // based on linear spread from baraja.js demo
+            direction: 'left',
+            center: false,
+            origin: {x: 20, y: 200},
+            translation: 300,
+            range: 20,
+        };
+
+    var gameInventor =  {
+        init : function(options) {
+            return gameInventor;
+        },
+        pick_cards: function() {
+            var img, card;
+            for (var mode in cards) {
+                img = $this.find('img[class=' + mode + ']');
+                // grab random card from list (logic via stackoverflow)
+                card = cards[mode][Math.floor(Math.random()*cards[mode].length)];
+                // set image source
+                img.attr('src', base_path + card + ext);
+            }
+            // re-fan the cards each time
+            baraja.fan(baraja_opts);
+            return gameInventor;
+        }
+    };
+
+    // TODO: randomize/regenerate button, share button to generate link
+    // share - maybe store indexes for each mode? then load them via
+    // querystring or anchor text on page load  (maybe encode?)
+
+
+    // initial random set
+    gameInventor.init().pick_cards();
+    return gameInventor;
+};
+
+
+
 $( document ).ready(function() {
     $('.word-connections').connectionsBoard();
     loadLiuORules();
+
+    $('#game-inventor-cards').gameInventor();
 });

@@ -210,14 +210,21 @@ blockquote p {
 .card.team1 {
     background-color: #397CF0;
 }
-.card.team1::after {
-    content: "\f004"; /* heart */
-}
 .card.team2 {
     background-color: #39CD4D;
 }
-.card.team2::after {
+.wedding .card.team1::after {
+    content: "\f004"; /* heart */
+}
+.wedding .card.team2::after {
     content: "\f06b"; /* gift */
+}
+
+.nasaga .card.team1::after {
+    content: '\1F3B2'; /* dice */
+}
+.nasaga .card.team2::after {
+    content: '\1F464'; /* person */
 }
 
 /* adjust for fullscreen */
@@ -332,4 +339,42 @@ input.checkbox-toggle:checked + label::after {
 
 input.checkbox-toggle {
     display: none;
+}
+
+
+
+/* game specific */
+
+ul.nostyle {
+    list-style: none;
+    padding: 0px;
+}
+
+ul.nostyle li:before {
+    width: 1.5em;
+    display: inline-block;
+    font-family: Sans-Serif;
+}
+
+li.game-type:before {
+    content: '\1F3B2'; /* dice */
+}
+li.game-mechanism:before {
+    content: '\2699';  /* gear */
+}
+li.game-audience:before {
+    content: '\1F464'; /* person */
+}
+li.game-theme:before {
+    content: '\1F3A8';  /* art palette */
+}
+
+#game-inventor-cards img {
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  border-radius:20px;
+  background: #fff; /* fallback for browsers that don't understand rgba */
+  border: #solid 20px #000; /* fallback for browsers that don't understand rgba */
+  background-color: rgba(255,255,255,0.2)/* very transparent white */
+/*  border-color: rgba(0,0,0,0.2) /*Very transparent black*/
 }

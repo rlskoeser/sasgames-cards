@@ -370,14 +370,35 @@ li.game-theme:before {
     content: '\1F3A8';  /* art palette */
 }
 
-#game-inventor-cards img {
+#game-inventor-cards img, .card-view img {
   -moz-border-radius:20px;
   -webkit-border-radius:20px;
   border-radius:20px;
   background: #fff; /* fallback for browsers that don't understand rgba */
   border: #solid 20px #000; /* fallback for browsers that don't understand rgba */
-  background-color: rgba(255,255,255,0.2)/* very transparent white */
+  background-color: rgba(255,255,255,0.2); /* very transparent white */
 /*  border-color: rgba(0,0,0,0.2) /*Very transparent black*/
+}
+
+/* full-size view of single card when clicked/tapped */
+.card-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* semi transparent white */
+  z-index: 1400;
+}
+.card-view img {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 90%;
+  min-height: 90%;
 }
 
 /* override baraja translation that moves cards off of smaller screens */
@@ -392,3 +413,11 @@ li.game-theme:before {
         margin-right: 0 !important;
     }
 }
+
+@media (min-width: 560px) {
+    .card-view img {
+        min-width: auto;
+        min-height: auto;
+    }
+}
+

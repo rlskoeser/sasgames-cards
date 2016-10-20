@@ -15,6 +15,9 @@ title: Game Inventor
 <p>Brainstorm a game with these components and discuss your ideas with
     others.</p>
 
+<div class="card-view" style="display:none">
+    <img/>
+</div>
 
 <ul id="game-inventor-cards" class="baraja-container">
   <li>

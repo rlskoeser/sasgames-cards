@@ -179,6 +179,7 @@ function loadLiuORules() {
 $.fn.gameInventor = function() {
     var element = this,
         $this = $(this),
+        $cardview_img = $('.card-view img'),
         /** NOTE: doesn't currently account for site base url config */
         base_path = '/images/nasaga/cards/',
         ext = '.png',
@@ -213,6 +214,14 @@ $.fn.gameInventor = function() {
 
     var gameInventor =  {
         init : function(options) {
+            // when selected, show card in full-screen mode
+            $cardview_img.on('click', function(){ $(this).parent().hide(); });
+            $this.find('picture').on('click', function() {
+                var pic = $(this);
+                $cardview_img.attr('src', pic.find('img').attr('src'));
+                $cardview_img.parent().show();
+                return false;
+            });
             return gameInventor;
         },
         pick_cards: function() {

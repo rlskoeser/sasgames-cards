@@ -125,9 +125,9 @@ $.fn.connectionsBoard = function() {
     // initialize and draw the board with initial random set
     connectionsBoard.init().draw_board().randomize();
     // when button is clicked, randomize again
-    $this.on('connectionsBoard:randomize', function(event) { connectionsBoard.randomize() });
-    $this.on('connectionsBoard:fullscreen', function(event) { connectionsBoard.toggle_fullscreen() });
-    $this.on('connectionsBoard:perspective', function(event) { connectionsBoard.toggle_perspective() });
+    $this.on('connectionsBoard:randomize', function(event) { connectionsBoard.randomize(); });
+    $this.on('connectionsBoard:fullscreen', function(event) { connectionsBoard.toggle_fullscreen(); });
+    $this.on('connectionsBoard:perspective', function(event) { connectionsBoard.toggle_perspective(); });
 
     // if user exits via esc or back button, remove fullscreen classes
     function escFullscreen(event) {
@@ -209,12 +209,21 @@ $.fn.gameInventor = function() {
             origin: {x: 0, y: 0},
             translation: 150,
             range: 20,
-        };
+        },
+        fanned = false;
         // tap to view or go full screen with single card?
 
     var gameInventor =  {
         init : function(options) {
-            // when selected, show card in full-screen mode
+            var controls = $('<div class="controls"> </div>');
+            var regenerate = $('<button id="new" class="btn">regenerate <i class="fa fa-repeat"></i></button>');
+            regenerate.on('click.gameInventor', function(event) {
+                $this.trigger('gameInventor:pick-cards');
+            });
+            regenerate.appendTo(controls);
+            controls.insertAfter($this);
+
+            // click logic: when selected, show card in full-screen mode
             $cardview_img.on('click', function(){ $(this).parent().hide(); });
             $this.find('picture').on('click', function() {
                 var pic = $(this);
@@ -234,8 +243,11 @@ $.fn.gameInventor = function() {
                 pic.find('img').attr('src', base_path + card + ext);
                 pic.find('source').attr('srcset', base_path + card + sm + ext);
             }
-            // re-fan the cards each time
-            baraja.fan(baraja_opts);
+            // only fan the cards once, otherwise it's disorienting
+            if (! fanned) {
+                baraja.fan(baraja_opts);
+                fanned = true;
+            }
             return gameInventor;
         }
     };
@@ -243,6 +255,10 @@ $.fn.gameInventor = function() {
     // TODO: randomize/regenerate button, share button to generate link
     // share - maybe store indexes for each mode? then load them via
     // querystring or anchor text on page load  (maybe encode?)
+
+    $this.on('gameInventor:pick-cards', function(event) {
+        gameInventor.pick_cards();
+    });
 
 
     // initial random set

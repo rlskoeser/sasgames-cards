@@ -18,15 +18,40 @@ title: Game Inventor
 
 <ul id="game-inventor-cards" class="baraja-container">
   <li>
-    <img class="type"/>
+    <!-- <img class="type"/> -->
+    <picture class="type">
+      <source
+        media="(max-width: 480px)"
+        srcset=""/>
+      <img/>
+    </picture>
+
   </li>
   <li>
-    <img class="mechanism"/>
+    <picture class="mechanism">
+      <source
+        media="(max-width: 480px)"
+        srcset=""/>
+      <img/>
+    </picture>
+    <!-- <img class="mechanism"/> -->
   </li>
   <li>
     <img class="audience"/>
+    <picture class="audience">
+      <source
+        media="(max-width: 480px)"
+        srcset=""/>
+      <img/>
+    </picture>
   </li>
   <li>
     <img class="theme"/>
+    <picture class="theme">
+      <source
+        media="(max-width: 480px)"
+        srcset=""/>
+      <img/>
+    </picture>
   </li>
 </ul>

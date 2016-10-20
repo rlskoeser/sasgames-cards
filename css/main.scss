@@ -335,6 +335,7 @@ input.checkbox-toggle:checked + label::after {
     input.checkbox-toggle:checked ~ .content {
         display: block;
     }
+
 }
 
 input.checkbox-toggle {
@@ -377,4 +378,17 @@ li.game-theme:before {
   border: #solid 20px #000; /* fallback for browsers that don't understand rgba */
   background-color: rgba(255,255,255,0.2)/* very transparent white */
 /*  border-color: rgba(0,0,0,0.2) /*Very transparent black*/
+}
+
+/* override baraja translation that moves cards off of smaller screens */
+@media (max-width: 850px) {
+    #game-inventor-cards {
+        margin-right: 150px !important;
+    }
+}
+
+@media (max-width: 560px) {
+    #game-inventor-cards {
+        margin-right: 0 !important;
+    }
 }

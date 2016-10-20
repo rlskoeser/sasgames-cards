@@ -182,6 +182,7 @@ $.fn.gameInventor = function() {
         /** NOTE: doesn't currently account for site base url config */
         base_path = '/images/nasaga/cards/',
         ext = '.png',
+        sm = '_sm',
         cards = {
             'type': ['01_Cardgame', '02_ModernBoardGames', '03_Gameshow',
             '04_Party Games', '05_Trivia', '06_Metaphors', '07_Simulations',
@@ -204,23 +205,25 @@ $.fn.gameInventor = function() {
         baraja_opts = {  // based on linear spread from baraja.js demo
             direction: 'left',
             center: false,
-            origin: {x: 20, y: 200},
-            translation: 300,
+            origin: {x: 0, y: 0},
+            translation: 150,
             range: 20,
         };
+        // tap to view or go full screen with single card?
 
     var gameInventor =  {
         init : function(options) {
             return gameInventor;
         },
         pick_cards: function() {
-            var img, card;
+            var pic, card;
             for (var mode in cards) {
-                img = $this.find('img[class=' + mode + ']');
+                pic = $this.find('picture[class=' + mode + ']');
                 // grab random card from list (logic via stackoverflow)
                 card = cards[mode][Math.floor(Math.random()*cards[mode].length)];
                 // set image source
-                img.attr('src', base_path + card + ext);
+                pic.find('img').attr('src', base_path + card + ext);
+                pic.find('source').attr('srcset', base_path + card + sm + ext);
             }
             // re-fan the cards each time
             baraja.fan(baraja_opts);

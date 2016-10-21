@@ -187,7 +187,7 @@ $.fn.gameInventor = function() {
         sm = '_sm',
         cards = {
             'type': ['01_Cardgame', '02_ModernBoardGames', '03_Gameshow',
-            '04_Party Games', '05_Trivia', '06_Metaphors', '07_Simulations',
+            '04_Party_Games', '05_Trivia', '06_Metaphors', '07_Simulations',
             '08_Icebreakers', '09_Socialchange', '10_ScavengerHunt',
             '11_Debriefing', '12_Jolt', '13_Mobilegames'
             ],
@@ -250,7 +250,7 @@ $.fn.gameInventor = function() {
                 return false;
             });
 
-            $(document).keyup(function(e) {
+            $(document).keydown(function(e) {
                 var modal = $('.modal');
                 if (modal.is(":visible")) {
                     if (e.keyCode == 27) { // escape key

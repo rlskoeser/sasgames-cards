@@ -192,7 +192,7 @@ $.fn.gameInventor = function() {
             '11_Debriefing', '12_Jolt', '13_Mobilegames'
             ],
             'mechanism': ['14_AreaControl', '15_Deckbuilding', '16_WorkerPlacement',
-            '17_RollandMove', '18_Dexterity', '19_Auction', '20_Role Selection',
+            '17_RollandMove', '18_Dexterity', '19_Auction', '20_Role_Selection',
             '21_SetCollection', '22_Tileplacement', '23_Cooperation', '24_Puzzle',
             '25_PressYourLuck', '26_RealTimeStrategy'],
             'audience': ['27_ExecutiveDirector', '28_MadScientist', '29_BoardChair',

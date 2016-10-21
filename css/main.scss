@@ -423,6 +423,10 @@ li.game-theme:before {
     margin-top: 10%;
     font-size: 155%;
 }
+.game-inventor-share .inner p {
+  padding-right: 20px;
+}
+
 .game-inventor-share input {
     font-size: 155%;
     width: 90%;
@@ -443,6 +447,9 @@ li.game-theme:before {
 @media (max-width: 560px) {
     #game-inventor-cards {
         margin-right: 0 !important;
+    }
+    .game-inventor-share input {
+      font-size: 100%;
     }
 }
 

@@ -236,7 +236,11 @@ $.fn.gameInventor = function() {
             // click logic: when selected, show card in full-screen mode
             $cardview_img.on('click', function(){ $(this).parent().hide(); });
             // share url close button
-            $share.find('.close').on('click', function(){ $(this).parent().parent().hide(); });
+            $share.find('.close').on('click', function(){
+                $(this).parent().parent().hide();
+                // undo push state hash url
+                history.back();
+            });
             // share url copy to clipboard button
             $share.find('.copy').on('click', function() {
                 clipboard.copy($share.find('input').attr('value'));
@@ -250,16 +254,26 @@ $.fn.gameInventor = function() {
                 return false;
             });
 
-            $(document).keydown(function(e) {
-                var modal = $('.modal');
+            var modal = $('.modal');
+            $(document).bind('keydown', function(e) {
                 if (modal.is(":visible")) {
                     if (e.keyCode == 27) { // escape key
-                        modal.hide();
                         e.preventDefault();
+                        modal.hide();
+                        // undo push state hash url
+                        history.back();
+                        return false;
                     }
                 }
             });
-
+            window.onpopstate = function(event) {
+                event.preventDefault();
+                if (modal.is(":visible")) {
+                    event.preventDefault();
+                    modal.hide();
+                    return false;
+                }
+            };
 
             if (hash == 'game-inventor') {
                 // ensure section is opened
@@ -324,7 +338,10 @@ $.fn.gameInventor = function() {
         $share.find("input").attr('value', url);
         $share.show();
         $share.find("input").select();
+        // push new state so we back button can be used to close modal
+        window.history.pushState(null, null, '#share');
     });
+
 
     // initial random set
     gameInventor.init().pick_cards();

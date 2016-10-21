@@ -23,8 +23,8 @@ title: Game Inventor
     <div class="inner">
       <a class="close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
         <p>Copy this url and send to a friend to share this set of cards.</p>
-        <input type="text" value="http://..."/>
         <a class="copy"><i class="fa fa-clipboard fa-lg" aria-hidden="true"></i></a>
+        <input type="text" value="http://..."/>
     </div>
 </div>
 

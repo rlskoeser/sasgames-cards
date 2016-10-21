@@ -424,12 +424,16 @@ li.game-theme:before {
     font-size: 155%;
 }
 .game-inventor-share .inner p {
-  padding-right: 20px;
+  padding: 0 30px;
 }
 
+.game-inventor-share .copy {
+  float: right;
+  width: 10%;
+}
 .game-inventor-share input {
     font-size: 155%;
-    width: 90%;
+    width: 85%;
 }
 
 .game-inventor-share .close {

@@ -15,8 +15,17 @@ title: Game Inventor
 <p>Brainstorm a game with these components and discuss your ideas with
     others.</p>
 
-<div class="card-view" style="display:none">
+<div class="card-view modal" style="display:none">
     <img/>
+</div>
+
+<div class="game-inventor-share modal" style="display:none">
+    <div class="inner">
+      <a class="close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
+        <p>Copy this url and send to a friend to share this set of cards.</p>
+        <input type="text" value="http://..."/>
+        <a class="copy"><i class="fa fa-clipboard fa-lg" aria-hidden="true"></i></a>
+    </div>
 </div>
 
 <ul id="game-inventor-cards" class="baraja-container">

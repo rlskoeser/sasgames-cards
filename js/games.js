@@ -180,6 +180,7 @@ $.fn.gameInventor = function() {
     var element = this,
         $this = $(this),
         $cardview_img = $('.card-view img'),
+        $share = $('.game-inventor-share'),
         /** NOTE: doesn't currently account for site base url config */
         base_path = '/images/nasaga/cards/',
         ext = '.png',
@@ -210,35 +211,89 @@ $.fn.gameInventor = function() {
             translation: 150,
             range: 20,
         },
-        fanned = false;
+        fanned = false,
+        current = [],
+        hash = window.location.hash.substr(1),
+        query = window.location.search.substring(1);
         // tap to view or go full screen with single card?
 
     var gameInventor =  {
         init : function(options) {
+            // build control panel buttons
             var controls = $('<div class="controls"> </div>');
             var regenerate = $('<button id="new" class="btn">regenerate <i class="fa fa-repeat"></i></button>');
             regenerate.on('click.gameInventor', function(event) {
                 $this.trigger('gameInventor:pick-cards');
             });
             regenerate.appendTo(controls);
+            var share = $('<button id="new" class="btn">share <i class="fa fa-share"></i></button>');
+            share.on('click.gameInventor', function(event) {
+                $this.trigger('gameInventor:share');
+            });
+            share.appendTo(controls);
             controls.insertAfter($this);
 
             // click logic: when selected, show card in full-screen mode
             $cardview_img.on('click', function(){ $(this).parent().hide(); });
+            // share url close button
+            $share.find('.close').on('click', function(){ $(this).parent().parent().hide(); });
+            // share url copy to clipboard button
+            $share.find('.copy').on('click', function() {
+                clipboard.copy($share.find('input').attr('value'));
+            });
+            // NOTE: would be nice to support esc to exit cardview mode,
+            // and also back button for android
             $this.find('picture').on('click', function() {
                 var pic = $(this);
                 $cardview_img.attr('src', pic.find('img').attr('src'));
                 $cardview_img.parent().show();
                 return false;
             });
+
+            $(document).keyup(function(e) {
+                var modal = $('.modal');
+                if (modal.is(":visible")) {
+                    if (e.keyCode == 27) { // escape key
+                        modal.hide();
+                        e.preventDefault();
+                    }
+                }
+            });
+
+
+            if (hash == 'game-inventor') {
+                // ensure section is opened
+                $('#game-inventor-toggle').attr('checked', 'checked');
+                // get values when loaded via shared url
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == 'id') {
+                        current = pair[1].split(',');
+                    }
+                }
+            }
+
             return gameInventor;
         },
         pick_cards: function() {
-            var pic, card;
+            var pic, card, idx, use_indexes = [];
+            // if current is already set, load those cards
+            if (current.length) {
+                use_indexes = current.slice(0);  // clone current array
+                current = [];
+            }
             for (var mode in cards) {
                 pic = $this.find('picture[class=' + mode + ']');
-                // grab random card from list (logic via stackoverflow)
-                card = cards[mode][Math.floor(Math.random()*cards[mode].length)];
+                // use requested index if set
+                if (use_indexes.length) {
+                    idx = use_indexes.shift();
+                } else {
+                // otherwise grab random card from list (logic via stackoverflow)
+                    idx = Math.floor(Math.random()*cards[mode].length);
+                }
+                current.push(idx);
+                card = cards[mode][idx];
                 // set image source
                 pic.find('img').attr('src', base_path + card + ext);
                 pic.find('source').attr('srcset', base_path + card + sm + ext);
@@ -257,9 +312,19 @@ $.fn.gameInventor = function() {
     // querystring or anchor text on page load  (maybe encode?)
 
     $this.on('gameInventor:pick-cards', function(event) {
+        current = [];
         gameInventor.pick_cards();
     });
 
+    $this.on('gameInventor:share', function(event) {
+        // get current url without any hash or query string params
+        // TODO use tiny url if configured
+        var url = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        url +=  '?id=' + current.join(',') + '#game-inventor';
+        $share.find("input").attr('value', url);
+        $share.show();
+        $share.find("input").select();
+    });
 
     // initial random set
     gameInventor.init().pick_cards();

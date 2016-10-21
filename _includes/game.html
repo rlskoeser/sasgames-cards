@@ -1,4 +1,5 @@
 <div class="game-rules" id="{{ game.name }}">
+    <a name="{{ game.name }}"> </a> {% comment %} anchor for links {% endcomment %}
     <input id="{{ game.name }}-toggle" type="checkbox" class="checkbox-toggle"  {% if game.toggle == 'open' %}checked="checked"{% endif %}/>
     <label for="{{ game.name }}-toggle" class="fa"></label>
     <h2>{% if include.title %}{{ include.title }}{% else %}{{ game.title }}{% endif %}</h2>

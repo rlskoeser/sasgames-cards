@@ -331,9 +331,14 @@ $.fn.gameInventor = function() {
     });
 
     $this.on('gameInventor:share', function(event) {
-        // get current url without any hash or query string params
-        // TODO use tiny url if configured
-        var url = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        var url;
+        // use short url if one is configured
+        if (short_url !== undefined) {
+            url = short_url;
+        } else {
+        // otherwise, get current url without any hash or query string params
+            url = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        }
         url +=  '?id=' + current.join(',') + '#game-inventor';
         $share.find("input").attr('value', url);
         $share.show();

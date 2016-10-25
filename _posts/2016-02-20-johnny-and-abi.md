@@ -50,3 +50,9 @@ extra_js:
 {% assign game = site.game_rules | where:'name', 'liu-o' | first %}
  {% include game.html %}
 
+<script>
+$( document ).ready(function() {
+    $('.word-connections').connectionsBoard();
+    loadLiuORules();
+});
+</script>

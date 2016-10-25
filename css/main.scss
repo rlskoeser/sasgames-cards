@@ -464,3 +464,71 @@ li.game-theme:before {
     }
 }
 
+/* pure-css vertical tab adapted from
+  https://www.mdawson.net/csstips/purecsstabsvertical.php
+  and http://codepen.io/nik-savchenko/pen/xDIAe */
+
+/* Set the size and font of the tab widget */
+.tabGroup {
+    width: 100%;
+    position: relative;
+    padding-bottom: 150px;
+}
+
+/* Configure the radio buttons to hide off screen */
+.tabGroup > input[type="radio"] {
+    position: absolute;
+    left:-100px;
+}
+
+/* Configure maximum width of tabs and align to top */
+.tabGroup > .tablabels {
+    display: inline-block;
+    vertical-align: top;
+    width:160px;
+    margin-right:17px;
+}
+
+/* Configure labels to look like tabs */
+/*.tabGroup > div.tablabels > label {*/
+.tabGroup > label {
+    /* inline-block such that the label can be given dimensions */
+    display: block;
+    float: left;
+    clear: left;
+    width: 25%;
+    max-width: 100px;
+
+    background: #ccc;
+    border:1px solid #fff;
+
+    /* Padding around tab text */
+    padding: 5px 10px;
+
+    /* Set the background color to default gray (non-selected tab) */
+    background-color:#ddd;
+
+    z-index:32767;
+}
+
+.tabGroup > input:checked + label {
+  background: #eee;
+  font-weight: bold;
+}
+
+
+.tabGroup .tabcontent {
+    position: absolute;
+    top: 0;
+    width: 720px;
+    display: none;
+    height: 100px;
+    background-color: white;
+    padding: 10px 10px;
+    overflow: auto;
+}
+
+/* display tab content for selected input */
+.tabGroup > input:checked + label + .tabcontent {
+    display: inline-block;
+}

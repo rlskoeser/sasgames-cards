@@ -176,6 +176,11 @@ function loadLiuORules() {
 }
 
 /* logic for nasaga game inventor card selection */
+
+/* game inventor currently requires baraja for card layout; only define
+if it is available */
+if ($.fn.baraja) {
+
 $.fn.gameInventor = function() {
     var element = this,
         $this = $(this),
@@ -351,13 +356,136 @@ $.fn.gameInventor = function() {
     // initial random set
     gameInventor.init().pick_cards();
     return gameInventor;
+};  // end define gameInventor
+
+}  /* endif baraja is a function */
+
+
+function loadNasagaLegacyRules() {
+    // function to load rules for selected base game from google spreadsheet
+
+    var legacy_rules_url = 'https://spreadsheets.google.com/feeds/list/1NtA7soZuZbFFEp9J_voSchE-EabqMcQSiGBoAfdcRVM/1/public/full?alt=json';
+    var lastmodified;
+    var rule_list = $('#nasaga-legacy-rules');
+
+    // function to reload custom rules from the google spreadsheet
+    $.getJSON(legacy_rules_url, function(data, status, jqxhr) {
+        if (lastmodified == jqxhr.getResponseHeader('Last-Modified')) {
+            // no rules have changed, nothing to do
+            return;
+        }
+        // store the current last modified date
+        lastmodified = jqxhr.getResponseHeader('Last-Modified');
+        var entry = data.feed.entry;
+        // store the data on the dom
+        rule_list.removeData('rules');
+        rule_list.data('rules', entry);
+
+        rule_list.find('li').remove();  // remove existing entries
+        // todo; how to filter on selected game?
+        // todo: how to randomize, limit to N rules?
+        $(entry).each(function(){
+            rule_list.append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
+        });
+    });
+
+
+}
+
+/* board for word connections game */
+$.fn.nasagaLegacy = function() {
+    var element = this,
+        $this = $(this),
+        rules_url = 'https://spreadsheets.google.com/feeds/list/1NtA7soZuZbFFEp9J_voSchE-EabqMcQSiGBoAfdcRVM/1/public/full?alt=json',
+        lastmodified;
+
+    var nasagaLegacy =  {
+        init : function(options) {
+            var settings = $.extend({
+                size: 16,
+                per_team: 6
+            }, options);
+            return nasagaLegacy;
+        },
+
+        select_rules: function() {
+            // get current base game, for filtering rules
+            var current_game = $('input[type=radio][name=base-game]:checked').val();
+            $this.find('li').remove();  // remove any existing rules
+            // todo: how to randomize, limit to N rules?
+            var entries = $this.data('rules');
+            $(entries).each(function(){
+                // only display rules that apply to the current base game
+                var rule_games = this.gsx$whichgamesdoesthisruleapplyto.$t;
+                if (rule_games.toLowerCase().includes(current_game)) {
+                    $this.append('<li>' + this.gsx$enteryournewrule.$t + '</li>');
+                }
+            });
+        },
+
+        load_rules: function() {
+            // function to reload custom rules from the google spreadsheet
+            $.ajax({
+              dataType: "json",
+              // ifModified: true,  // causes access control error ??
+              url: rules_url,
+              success: function(data, status, jqxhr) {
+                if (lastmodified == jqxhr.getResponseHeader('Last-Modified')) {
+                   // no rules have changed, do not update dom
+                } else {
+                   // store the current last modified date
+                   lastmodified = jqxhr.getResponseHeader('Last-Modified');
+                   var entry = data.feed.entry;
+                   // store the data in the dom
+                   $this.removeData('rules');
+                   $this.data('rules', entry);
+               }
+               $this.trigger('nasagaLegacy:select-rules');
+              }
+            });
+
+/*            $.getJSON(legacy_rules_url, function(data, status, jqxhr) {
+                if (lastmodified == jqxhr.getResponseHeader('Last-Modified')) {
+                   // no rules have changed, do not update dom
+                } else {
+                   // store the current last modified date
+                   lastmodified = jqxhr.getResponseHeader('Last-Modified');
+                   var entry = data.feed.entry;
+                   // store the data in the dom
+                   $this.removeData('rules');
+                   $this.data('rules', entry);
+               }
+               nasagaLegacy.select_rules();
+
+            }*/
+        }
+    };
+
+    $this.on('nasagaLegacy:select-rules', function(event) {
+        nasagaLegacy.select_rules();
+    });
+
+
+    // initial set of rules for default base game
+    nasagaLegacy.init().load_rules();
+
+    // when base game changes, regenerate rules
+    $('input[type=radio][name=base-game]').change(function() {
+        nasagaLegacy.load_rules();
+    });
+
+
+    return nasagaLegacy;
+
 };
 
 
 
+/*  sample document ready: include appropriate games in page as needed.
 $( document ).ready(function() {
     $('.word-connections').connectionsBoard();
     loadLiuORules();
-
     $('#game-inventor-cards').gameInventor();
+    $('$nasaga-legacy-rules').nasagaLegacy();
 });
+*/

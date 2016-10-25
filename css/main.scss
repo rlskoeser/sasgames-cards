@@ -472,7 +472,7 @@ li.game-theme:before {
 .tabGroup {
     width: 100%;
     position: relative;
-    padding-bottom: 150px;
+    padding-bottom: 275px;
 }
 
 /* Configure the radio buttons to hide off screen */
@@ -520,12 +520,16 @@ li.game-theme:before {
 .tabGroup .tabcontent {
     position: absolute;
     top: 0;
-    width: 720px;
+    float: right;
     display: none;
-    height: 100px;
+    height: 275px;
     background-color: white;
-    padding: 10px 10px;
-    overflow: auto;
+    padding-left: 10px;
+    overflow: scroll;
+}
+
+.tabGroup .tabcontent p {
+  margin: 0;
 }
 
 /* display tab content for selected input */

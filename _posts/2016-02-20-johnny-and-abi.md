@@ -53,6 +53,6 @@ extra_js:
 <script>
 $( document ).ready(function() {
     $('.word-connections').connectionsBoard();
-    loadLiuORules();
+    loadLegacyRules('1g5hqNfD0pnd4Mxq9KTpdfQuPif6HHo2IclJOovBHx0s', '#new-liuo-rules');
 });
 </script>

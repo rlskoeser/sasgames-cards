@@ -9,12 +9,11 @@ form_url:
     <li><b>King</b>: Reverse the direction of play</li>
     <li><b>7</b>: Skip the next player</li>
     <li><b>2</b>: Next player must draw 2 cards and skip a turn</li>
-    <li><b>Signed</b>: A card signed by the person depicted is a wild card that can be played to change the suit</li>
 </ul>
 <p>When you are down to your last card, you must say “One card left” or draw a penalty card.</p>
 <p>The winner of the game is the first one out. They get to come up with a new rule for future games. Rules could include adding to the special cards, forcing a motion or action if something happens, or any creative thing you can think of.</p>
 
-<p><a target="_blank" href="">Submit your new rules</a> to share them with everyone.</p>
+<p><a target="_blank" href="https://forms.gle/SxL7yvghVBCNEPRJ7">Submit your new rules</a> to share them with everyone.</p>
 
 <b>New rules that have been added so far:</b>
 <ul id="new-kingsreverse-rules"/>

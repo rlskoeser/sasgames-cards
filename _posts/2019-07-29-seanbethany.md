@@ -51,6 +51,6 @@ extra_js:
 <script>
 $( document ).ready(function() {
     $('.word-connections').connectionsBoard();
-    loadLiuORules();
+    loadLegacyRules('1xhag1ERquvejlk48ZH2RBdg8yZcKVT0DJszHYaUx63U', '#new-kingsreverse-rules');
 });
 </script>

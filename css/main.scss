@@ -227,6 +227,22 @@ blockquote p {
     content: '\1F464'; /* person */
 }
 
+/* colors & symbols for word connections for sean & bethany */
+.seanbethany .wedding .card.team1::after {
+    content: "\263E"; /* crescent */
+}
+.seanbethany .wedding .card.team2::after {
+    content: "\1f338"; /* sunflower */
+}
+
+.seanbethany .card.team1 {
+    background-color: #03008e;
+}
+.seanbethany .card.team2 {
+    background-color: #f4fb07;
+}
+
+
 /* adjust for fullscreen */
 .board-container.fullscreen {
     width: 100%;

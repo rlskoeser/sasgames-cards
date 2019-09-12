@@ -3,6 +3,9 @@ title: Sean and Bethany
 layout: game-rules
 extra_class: seanbethany
 banner:
+    default: seanbethany.png
+    medium: seanbethany_850.png
+    small: seanbethany_480.png
 description: >
     Custom card deck and games for a wedding favor and reception
     entertainment.
